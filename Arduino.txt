@@ -1,0 +1,29 @@
+
+
+pontos de rede.
+Vinicius (02) OK
+Eric (04) OK
+Isaac (05) OK
+
+2 Conectando o Cabo Console:
+Conectamos o cabo console na porta serial do PC e em seguida pesquisamos pelo  PuTTY na barra de pesquisa do Windowns. 
+    1- Utilizamos a opção Serial na velocidade (9600).
+
+3 Resetar o Switch:
+Deixar o Switch inicializar 
+    1- Apertar o botão (MODE) por 15 segundos e esperar aparecer a mensagem no terminal.
+    2- Após pressionarmos o botão (MODE) aparecerá algumas mensagens no terminal de comando, então será necessário esperar todas mensagens carregar até terminar o reset.
+
+4 Resetar o Roteador: 
+    1- Desconectar o cabo console do roteador e conectar no switch. 
+    2- Desligar o roteador pelo botão ON/OFF, ligar novamente e abrir o terminal PuTTY e executar o comando Special Command> Break no mesmo momento que aparece o #######. (Executar o comando clicando com o botão direito do mouse e selecionando o Special Command).
+    3- Digitar o comando confreg 0x2142 e pressionar a tecla Enter.
+    4- O roteador irá inicializar e não irá ler o Startup-config.
+    5- Limpando as configurações do Router 
+    5.1 Acessar o modo privilegiado Enable.<Enter> 
+    5.2 Limpar o arquivo Startup-config da NVRAM: erase startup-config.<Enter> 
+    5.3 Mudar o registro de inicialização: config-register 0x2102 <Enter>
+    5.4 Sair de todos os modos com END ou Ctrl + Z
+    5.5 Salvar as configurações: running-config para NVRAM: copy running-config startup-config.<Enter>
+    5.6 Reinicilizar o Router: reload. <Enter>
+    5.7 Verificar a chave do registro: enable <Enter>, show version.<Enter>
