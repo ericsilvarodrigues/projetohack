@@ -1,0 +1,70 @@
+configuração básicas do swicth
+
+1-acessar modo enable.
+2-configurar data e hora com o comando clock set.
+3-acessar configurte terminal.
+4-mudar nome do switch (hostname) para sw-g0.
+5-habilitar o serviço de criptográfia de senhas do tipo password tipo-7.
+service password-encryption
+6-habilitar serviço de data/hora detalhado nos logs
+service timestamps log datetime msec.
+7-verificar tentativa de conexão simultaneas, fazer o bloqueio de um periodo determinado de tempo.
+login block-for 120 attempts 4 within 60
+8-Desativar a resolução de nomes de dominio.
+no ip domain-lookup
+9-configurar banner.
+banner mot #AVISO: acesso autorizado somente a funcionários da empresa ARDUINO-INFRA#
+10-habilitar a seha do tipo secret Tipo-5 para modo enable privilegiado.
+enable secret 123@senac.
+11-criar usuários, senhas do tipo-5 e privilégios diferenciados
+username ??nomealuno?? privilege 15 secret 123@senac
+username ??nomealuno?? privilege 15 secret 123@senac
+12-configuração do nome de domínio, obrigatório para a configuração do  SSH.
+ip domain-name senac.br
+13-criação da chave de criptografia e habilitação do serviço de SSH
+crypto key generate rsa general-keys modulus 1024
+14-habilitando a versão 2 do serviço do SSH
+ip ssh version 2
+15-habilitar o tempo de inatividade para novas conexões do SSH.
+ip ssh time-out 60
+16-habilitar o número máximo de tentativas de conexão do SSH.
+ip ssh authentication-restries 2
+17-aceesando a linha console 0
+!Habilitando senha do tipo Password Tipo-7
+		password 123@senac
+		
+		!Forçando fazer login com usuário e senha local
+		login local
+		
+		!Sincronizando os logs na tela
+		logging synchronous
+		
+		!Habilitando o tempo de inatividade do console
+		exec-timeout 5 30
+		
+		!Saindo da linha console
+		exit
+18-acessando as linhas virtuais
+line vty 0 4
+Habilitando senha do tipo Password Tipo-7
+		password 123@senac
+		
+		!Forçando fazer login com usuário e senha local
+		login local 
+		
+		!Sincronizando os logs na tela
+		logging synchronous
+		
+		!Habilitando o tempo de inatividade do terminal
+		exec-timeout 5 30
+		
+		!Configuração do tipo de protocolo de transporte de entrada
+		transport input ssh
+		
+		!Saindo de todos os níveis
+		end
+19- salvando as configurações
+copy running-config startup-config.
+
+20- ver configurações
+show running-config.

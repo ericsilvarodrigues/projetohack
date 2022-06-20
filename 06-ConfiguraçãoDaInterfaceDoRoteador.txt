@@ -1,0 +1,63 @@
+06-ConfiguraçãoDaInterfaceDoRoteador
+ 
+ !Acessar modo de configuração global
+	configure terminal
+	
+		!Acessando a Interface Física GigabitEthernet 0/0
+		interface gigabitEthernet 0/0
+			
+			!Inicializando a Interface Física gigabitEthernet 0/0
+			no shutdown
+			exit
+
+		!OBSERVAÇÃO IMPORTANTE: veja o arquivo 00-DocumentacaoDaRede.txt
+		interface gigabitEthernet 0/0.40
+			description Subinterface da VLAN de SVI do Switch Layer 3 3560
+			encapsulation dot1Q 40
+			ip address 172.16.40.254 255.255.255.0
+			exit
+
+		!Configurando a Subinterface da VLAN do Isaac
+		interface gigabitEthernet 0/0.41
+			description Subinterface da VLAN do Primeiro Isaac
+			encapsulation dot1Q 41
+			ip address 172.16.41.254 255.255.255.0
+			exit
+
+		!Configurando a Subinterface da VLAN do Eric
+		interface gigabitEthernet 0/0.42
+			description Subinterface da VLAN do Eric
+			encapsulation dot1Q 42
+			ip address 172.16.42.254 255.255.255.0
+			exit
+
+		!Configurando a Subinterface da VLAN do Vinicius
+		interface gigabitEthernet 0/0.43
+			description Subinterface da VLAN do Vinicius
+			encapsulation dot1Q 43
+			ip address 172.16.43.254 255.255.255.0
+			exit
+
+		!Configurando a Subinterface da VLAN do Quarto Usuário
+		interface gigabitEthernet 0/0.??
+			description Subinterface da VLAN do Quarto Usuário
+			encapsulation dot1Q ??
+			ip address 172.16.??.254 255.255.255.0
+			exit
+
+		!Configurando a Subinterface da VLAN Wireless
+		interface gigabitEthernet 0/0.46
+			description Subinterface da VLAN Wireless
+			encapsulation dot1Q 46
+			ip address 172.16.46.254 255.255.255.0
+			end
+	write
+		
+!Salvando as configurações do Switch
+copy running-config startup-config
+
+!Visualizando as configurações
+show running-config
+show ip interface brief
+show ip route
+show ip route connected

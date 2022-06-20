@@ -27,3 +27,28 @@ Deixar o Switch inicializar
     5.5 Salvar as configurações: running-config para NVRAM: copy running-config startup-config.<Enter>
     5.6 Reinicilizar o Router: reload. <Enter>
     5.7 Verificar a chave do registro: enable <Enter>, show version.<Enter>
+
+
+
+banner motd #
+
+                   _       _              _        __           
+     /\           | |     (_)            (_)      / _|          
+    /  \   _ __ __| |_   _ _ _ __   ___   _ _ __ | |_ _ __ __ _ 
+   / /\ \ | '__/ _` | | | | | '_ \ / _ \ | | '_ \|  _| '__/ _` |
+  / ____ \| | | (_| | |_| | | | | | (_) || | | | | | | | | (_| |
+ /_/    \_\_|  \__,_|\__,_|_|_| |_|\___(_)_|_| |_|_| |_|  \__,_|
+                                                                
+                                                                
+           
+aviso acesso somente a funcionario 
+#
+
+
+
+username isaac privilege 15 secret 123@senac
+username eric privilege 15 secret 123@senac
+username vinicius privilege 15 secret 123@senac
+
+
+Interface SVI de Gerenciamento do Grupo-04 isaac 

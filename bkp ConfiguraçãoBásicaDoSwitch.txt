@@ -1,0 +1,134 @@
+Current configuration : 2339 bytes
+!
+! Last configuration change at 19:53:26 UTC Thu May 26 2022
+! NVRAM config last updated at 19:53:40 UTC Thu May 26 2022
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname sw-g04
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$beld$ne2jPQSN9X4KNnDlZ8MYq.
+!
+username isaac privilege 15 secret 5 $1$KodQ$h7xIARtpKSasZBkanNjrY1
+username eric privilege 15 secret 5 $1$cwIK$c4/ov/rRH42QT6QJ7PIIY1
+username vinicius privilege 15 secret 5 $1$6zQp$bLGJgcdG7Uk6xYoLJzv5e/
+!
+!
+no aaa new-model
+system mtu routing 1500
+no ip domain-lookup
+ip domain-name senac.br
+!
+!
+login block-for 120 attempts 4 within 60
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip ssh time-out 60
+ip ssh authentication-retries 2
+ip ssh version 2
+!
+!
+!
+interface FastEthernet0/1
+!
+interface FastEthernet0/2
+!
+interface FastEthernet0/3
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+!
+interface FastEthernet0/6
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+!
+ip classless
+ip http server
+ip http secure-server
+!
+!
+!
+!
+!
+banner motd ^C
+                _       _              _        __
+               | |     (_)            (_)      / _|
+   __ _ _ __ __| |_   _ _ _ __   ___   _ _ __ | |_ _ __ __ _
+ | (_| | | | (_| | |_| | | | | | (_) || | | | | | | | | (_| |
+  \__,_|_|  \__,_|\__,_|_|_| |_|\___(_)_|_| |_|_| |_|  \__,_|
+aviso acesso somente a funcionario
+^C
+!
+line con 0
+ exec-timeout 5 30
+ password 7 06575D726C5D0C170414
+ logging synchronous
+ login local
+line vty 0 4
+ exec-timeout 5 30
+ password 7 0055415524480E080E22
+ logging synchronous
+ login local
+ transport input ssh
+line vty 5 15
+ login
+!
+end

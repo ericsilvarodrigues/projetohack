@@ -1,0 +1,34 @@
+05-ConfiguraçãoDoSVIDoSwitch
+
+!Acessar o modo exec privilegiado
+enable
+
+    !Acessar modo de configuração global
+    configure terminal 
+
+    1- Configuração do gateway padrão IPv4 do SVI
+        IP default-gateway 172.16.40.254
+
+    2- Configuração da interface virtual VLAN SVI
+        interface vlan 40
+
+        2.2- Configuração da descrição 
+        decription Interface SVI de Gerenciamento do Grupo-04
+
+        2.3- Configuração do endereçamento IPv4 do SVI
+        ip address 172.16.40.253 255.255.255.0
+
+        2.4- Inicializando a interface
+        no shutdown
+
+        2.5- Saindo de todos os níveis 
+        end 
+
+5- Salvando as informações
+copy running-config startup-config
+	
+6- Comandos para visualização das informações:
+show running-config
+show ip interface brief
+show vlan brief
+show vlan id ??
